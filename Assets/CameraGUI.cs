@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CameraGUI : MonoBehaviour {
 	public Texture2D CrossHairTex;
+	public Texture2D OxygenTex;
 	public GameObject[] objectArray;
 	public GameObject[] WeaponArray;
 
@@ -10,6 +11,7 @@ public class CameraGUI : MonoBehaviour {
 	private GameObject WeaponPosition;
 
 	private Rect CrossHairPosition;
+	private Rect OxygenPosition;
 	private GameObject currentObject;
 	//private GameObject CameraObject;
 	private bool openMenu = false;
@@ -49,6 +51,7 @@ public class CameraGUI : MonoBehaviour {
 
 	void Update () {
 		CrossHairPosition = new Rect((Screen.width - CrossHairTex.width)/2, (Screen.height - CrossHairTex.height)/2, CrossHairTex.width, CrossHairTex.height);
+		OxygenPosition = new Rect(0, Screen.height-(Screen.height/8), OxygenTex.width/2, OxygenTex.height/2);
 
 		if(Input.GetKey(KeyCode.Alpha1))
 			switchWeapon(WeaponArray[0]);
@@ -97,6 +100,7 @@ public class CameraGUI : MonoBehaviour {
 	
 	void OnGUI () {
 		GUI.DrawTexture(CrossHairPosition, CrossHairTex); //Draws the crosshair
+		GUI.DrawTexture(OxygenPosition, OxygenTex); //Draws the Oxygen Marker
 	
 		if(openMenu){
 			int boxL = 120; //Horizontal lenght of the menu
