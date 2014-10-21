@@ -14,6 +14,7 @@ public class Lamp : MonoBehaviour , deviceInterface{
 	void Update () {
 	
 	}
+
 	public int getNeededPower(){
 		return nPower;
 	}

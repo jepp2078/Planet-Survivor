@@ -15,7 +15,7 @@ public class Wire : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Debug.DrawLine(source.transform.position, dest.transform.position, Color.green, 1, true);
 	}
 	public int getWireNum(){
 		return wireNum;

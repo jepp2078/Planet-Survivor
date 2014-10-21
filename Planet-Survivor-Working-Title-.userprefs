@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PhysicsGun.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CameraGUI.cs">
     <Files>
-      <File FileName="Assets\Electricity\TestGun.cs" Line="60" Column="1" />
+      <File FileName="Assets\PhysicsGun.cs" Line="65" Column="53" />
+      <File FileName="Assets\Electricity\TestGun.cs" Line="48" Column="3" />
       <File FileName="Assets\CameraGUI.cs" Line="34" Column="3" />
-      <File FileName="Assets\PhysicsGun.cs" Line="66" Column="4" />
-      <File FileName="Assets\Electricity\Lamp.cs" Line="31" Column="1" />
-      <File FileName="Assets\Electricity\Wire.cs" Line="56" Column="1" />
+      <File FileName="Assets\Electricity\Lamp.cs" Line="17" Column="2" />
+      <File FileName="Assets\Electricity\Wire.cs" Line="12" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
