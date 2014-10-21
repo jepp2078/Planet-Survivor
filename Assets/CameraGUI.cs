@@ -6,7 +6,6 @@ public class CameraGUI : MonoBehaviour {
 	public Texture2D OxygenTex;
 	public GameObject[] objectArray;
 	public GameObject[] WeaponArray;
-	public string Oxygen = "100";
 
 	private GameObject CurrentWeapon;
 	private GameObject WeaponPosition;
@@ -102,9 +101,6 @@ public class CameraGUI : MonoBehaviour {
 	void OnGUI () {
 		GUI.DrawTexture(CrossHairPosition, CrossHairTex); //Draws the crosshair
 		GUI.DrawTexture(OxygenPosition, OxygenTex); //Draws the Oxygen Marker
-		Vector2 OxyCenter = OxygenPosition.center;
-		Rect OxyLabel = new Rect (OxyCenter.x - 10, OxyCenter.y - 10, OxygenTex.width, OxygenTex.height);
-		GUI.Label(OxyLabel, "100"); //Draws the Oxygen Text
 	
 		if(openMenu){
 			int boxL = 120; //Horizontal lenght of the menu
