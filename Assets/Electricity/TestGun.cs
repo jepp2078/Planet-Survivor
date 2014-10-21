@@ -34,6 +34,12 @@ public class TestGun : MonoBehaviour {
 					if(focus1 != null)
 						make ();
 				}
+
+				if (hit.collider.gameObject.name == "OxyGen") {
+					focus1 = hit.collider.gameObject;
+					if(focus2 != null)
+						make ();
+				}
 			}
 		}
 		if(Input.GetKeyDown (KeyCode.E)){

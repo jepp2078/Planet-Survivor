@@ -49,6 +49,8 @@
      <Compile Include="Assets\CameraGUI.cs" />
      <Compile Include="Assets\Electricity\Generator.cs" />
      <Compile Include="Assets\Electricity\Lamp.cs" />
+     <Compile Include="Assets\Electricity\OxyGen.cs" />
+     <Compile Include="Assets\Electricity\OxySphere.cs" />
      <Compile Include="Assets\Electricity\TestGun.cs" />
      <Compile Include="Assets\Electricity\Wire.cs" />
      <Compile Include="Assets\Electricity\deviceInterface.cs" />

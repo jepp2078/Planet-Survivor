@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CameraGUI.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Electricity\OxyGen.cs">
     <Files>
-      <File FileName="Assets\CameraGUI.cs" Line="103" Column="72" />
+      <File FileName="Assets\Vitals.cs" Line="12" Column="1" />
+      <File FileName="Assets\Electricity\OxyGen.cs" Line="21" Column="22" />
+      <File FileName="Assets\Electricity\TestGun.cs" Line="35" Column="15" />
+      <File FileName="Assets\Electricity\OxySphere.cs" Line="22" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

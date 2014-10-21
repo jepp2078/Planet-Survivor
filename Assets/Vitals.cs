@@ -5,7 +5,7 @@ public class Vitals : MonoBehaviour {
 	public CameraGUI gui;
 	public int oxygen = 100;
 	public int health = 100;
-	public bool outside = true;
+	public bool inside;
 	private float timeSinceLastUpdate;
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class Vitals : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(outside){
+		if(!inside){
 			timeSinceLastUpdate += Time.deltaTime;
 			if (timeSinceLastUpdate > 0.1) {
 				if(oxygen == 0){
@@ -34,6 +34,21 @@ public class Vitals : MonoBehaviour {
 					timeSinceLastUpdate = 0;
 				}
 			}
+		}else{
+			timeSinceLastUpdate += Time.deltaTime;
+			if (timeSinceLastUpdate > 0.1) {
+				if(oxygen == 100){
+
+				}else{
+					oxygen += 1;
+					gui.setVitals(1,oxygen);
+					timeSinceLastUpdate = 0;
+				}
+			}
 		}
+	}
+	public void regenOxy(bool status){
+		inside = status;
+		Debug.Log (status);
 	}
 }
