@@ -61,7 +61,7 @@ public class PhysicsGun : MonoBehaviour {
 			Vector3 gunVector = CameraView.transform.TransformPoint(Vector3.forward*objectScale*rayLenght);
 			Vector3 objectToGun = gunVector-currentObject.position;
 
-			Debug.DrawLine (GunPoint.transform.position, gunVector, Color.blue, 1, true);
+			Debug.DrawLine(GunPoint.transform.position, gunVector, Color.blue, 1, true);
 			Debug.DrawLine(currentObject.position, gunVector, Color.yellow, 1, true);
 
 			Vector3 relativeHit = (hit.point-currentObjectOriginalPos)+currentObject.position;
