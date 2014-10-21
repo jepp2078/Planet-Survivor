@@ -48,8 +48,8 @@ public class TestGun : MonoBehaviour {
 	}
 
 	void make(){
-		Instantiate (prefab);
-		Wire wireClass = prefab.GetComponent<Wire> ();
+		GameObject tempWire = (GameObject)Instantiate(prefab);
+		Wire wireClass = tempWire.GetComponent<Wire> ();
 		wireClass.setDest (focus1);
 		wireClass.setSource (focus2);
 		wireClass.connect ();
