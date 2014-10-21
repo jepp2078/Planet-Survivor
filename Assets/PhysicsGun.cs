@@ -20,12 +20,14 @@ public class PhysicsGun : MonoBehaviour {
 		rayLenght = 100;
 		rayForce = 100;
 		objectScale = 1;
+
 		GunPoint = GameObject.Find("GunPoint");
 		CameraView = GameObject.Find("Main Camera");
 	}
 
 	// Update is called once per frame
 	void Update() {
+
 		bool fireDown = Input.GetButtonDown("Fire1");
 		if(Input.GetButton("Fire1")){
 			//Debug.DrawRay (CameraView.transform.position, CameraView.transform.forward*rayLenght, Color.green, 0.5f, true);
