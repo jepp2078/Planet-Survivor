@@ -24,6 +24,7 @@ public class PhysicsGun : MonoBehaviour {
 		Debug.Log("finding things");
 		GunPoint = GameObject.Find("GunPoint");
 		CameraView = GameObject.Find("Main Camera");
+
 	}
 
 	// Update is called once per frame
