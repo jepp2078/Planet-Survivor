@@ -82,9 +82,23 @@ public class CameraGUI : MonoBehaviour {
 		
 		if(Input.GetKeyDown(KeyCode.Q)){
 			openMenu = true;
+			Screen.lockCursor = false;
 		}
 		if(Input.GetKeyUp(KeyCode.Q)){
 			openMenu = false;
+			Screen.lockCursor = true;
+		}
+
+		if (Input.GetKeyDown("escape"))
+			Screen.lockCursor = false;
+		
+		if (!Screen.lockCursor && wasLocked) {
+			wasLocked = false;
+			DidUnlockCursor();
+		} else
+		if (Screen.lockCursor && !wasLocked) {
+			wasLocked = true;
+			DidLockCursor();
 		}
 	}
 	
@@ -101,6 +115,7 @@ public class CameraGUI : MonoBehaviour {
 			}
 		}
 	}
+	private bool wasLocked = false;
 	
 	void OnGUI () {
 		GUI.DrawTexture(CrossHairPosition, CrossHairTex); //Draws the crosshair
@@ -131,7 +146,9 @@ public class CameraGUI : MonoBehaviour {
 				}
 			}
 		}
+	
 	}
+
 	public void setVitals(int vital, int value){
 		switch(vital){
 			case 1: 
@@ -143,4 +160,18 @@ public class CameraGUI : MonoBehaviour {
 
 		}
 	}
+
+	void DidLockCursor() {
+		Debug.Log("Locking cursor");
+		guiTexture.enabled = false;
+	}
+	void DidUnlockCursor() {
+		Debug.Log("Unlocking cursor");
+		guiTexture.enabled = true;
+	}
+	void OnMouseDown() {
+		Screen.lockCursor = true;
+	}
+
+
 }
