@@ -2,17 +2,17 @@
 using System.Collections;
 
 public class PhysicsGun : MonoBehaviour {
-	Rigidbody currentObject;
-	RaycastHit hit;
-	Vector3 currentObjectOriginalPos;
-	GameObject GunPoint;
-	GameObject CameraView;
-
-	bool holdingObject;
-
 	public float rayLenght;
 	public float rayForce;
 	public float objectScale;
+
+	private Rigidbody currentObject;
+	private RaycastHit hit;
+	private Vector3 currentObjectOriginalPos;
+	private GameObject GunPoint;
+	private GameObject CameraView;
+
+	private bool holdingObject;
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +21,17 @@ public class PhysicsGun : MonoBehaviour {
 		rayForce = 100;
 		objectScale = 1;
 
+		Debug.Log("finding things");
 		GunPoint = GameObject.Find("GunPoint");
 		CameraView = GameObject.Find("Main Camera");
 	}
 
 	// Update is called once per frame
 	void Update() {
+		if(GunPoint==null || CameraView==null){
+			GunPoint = GameObject.Find("GunPoint");
+			CameraView = GameObject.Find("Main Camera");
+		}
 
 		bool fireDown = Input.GetButtonDown("Fire1");
 		if(Input.GetButton("Fire1")){
@@ -60,6 +65,8 @@ public class PhysicsGun : MonoBehaviour {
 		
 			Vector3 gunVector = CameraView.transform.TransformPoint(Vector3.forward*objectScale*rayLenght);
 			Vector3 objectToGun = gunVector-currentObject.position;
+
+			Debug.Log("Gunpoint: "+GunPoint);
 
 			Debug.DrawLine(GunPoint.transform.position, gunVector, Color.blue, 1, true);
 			Debug.DrawLine(currentObject.position, gunVector, Color.yellow, 1, true);
