@@ -3,15 +3,18 @@ using System.Collections;
 
 public class CameraGUI : MonoBehaviour {
 	public Texture2D CrossHairTex;
-	public Texture2D OxygenTex;
+	public Texture2D WindowTex;
 	public GameObject[] objectArray;
 	public GameObject[] WeaponArray;
+	private string Oxygen;
+	private string Health;
 
 	private GameObject CurrentWeapon;
 	private GameObject WeaponPosition;
 
 	private Rect CrossHairPosition;
 	private Rect OxygenPosition;
+	private Rect HealthPosition;
 	private GameObject currentObject;
 	//private GameObject CameraObject;
 	private bool openMenu = false;
@@ -51,7 +54,8 @@ public class CameraGUI : MonoBehaviour {
 
 	void Update () {
 		CrossHairPosition = new Rect((Screen.width - CrossHairTex.width)/2, (Screen.height - CrossHairTex.height)/2, CrossHairTex.width, CrossHairTex.height);
-		OxygenPosition = new Rect(0, Screen.height-(Screen.height/8), OxygenTex.width/2, OxygenTex.height/2);
+		OxygenPosition = new Rect(0+Screen.width/128, Screen.height-(Screen.height/8), WindowTex.width/2, WindowTex.height/2);
+		HealthPosition = new Rect(Screen.width-Screen.width/8.5f, Screen.height-(Screen.height/8), WindowTex.width/2, WindowTex.height/2);
 
 		if(Input.GetKey(KeyCode.Alpha1))
 			switchWeapon(WeaponArray[0]);
@@ -115,10 +119,20 @@ public class CameraGUI : MonoBehaviour {
 	
 	void OnGUI () {
 		GUI.DrawTexture(CrossHairPosition, CrossHairTex); //Draws the crosshair
-		GUI.DrawTexture(OxygenPosition, OxygenTex); //Draws the Oxygen Marker
+		GUI.DrawTexture(OxygenPosition, WindowTex); //Draws the Oxygen Marker
+		GUI.DrawTexture(HealthPosition, WindowTex); //Draws the Health Marker
+
 		Vector2 OxyCenter = OxygenPosition.center;
-		Rect OxyLabel = new Rect (OxyCenter.x - 10, OxyCenter.y - 10, OxygenTex.width, OxygenTex.height);
-		GUI.Label(OxyLabel, "100"); //Draws the Oxygen Text
+		Rect OxyLabel = new Rect (OxyCenter.x - 10, OxyCenter.y - 10, WindowTex.width, WindowTex.height);
+		Rect OxyLabelText = new Rect (OxyCenter.x - 25, OxyCenter.y - 25, WindowTex.width, WindowTex.height);
+		GUI.Label(OxyLabel, Oxygen); //Draws the Oxygen Text
+		GUI.Label(OxyLabelText, "OXYGEN"); //Draws the Oxygen Text
+
+		Vector2 HealthCenter = HealthPosition.center;
+		Rect  HealthLabel = new Rect (HealthCenter.x - 10, HealthCenter.y - 10, WindowTex.width, WindowTex.height);
+		Rect  HealthLabelText = new Rect (HealthCenter.x - 25, HealthCenter.y - 25, WindowTex.width, WindowTex.height);
+		GUI.Label(HealthLabel, Health); //Draws the Health Text
+		GUI.Label(HealthLabelText, "HEALTH"); //Draws the Health Text
 	
 		if(openMenu){
 			int boxL = 120; //Horizontal lenght of the menu
@@ -135,6 +149,18 @@ public class CameraGUI : MonoBehaviour {
 	
 	}
 
+	public void setVitals(int vital, int value){
+		switch(vital){
+			case 1: 
+				Oxygen = value.ToString()+"%";
+				break;
+			case 2: 
+				Health = value.ToString()+"%";
+				break;
+
+		}
+	}
+
 	void DidLockCursor() {
 		Debug.Log("Locking cursor");
 	}
@@ -144,5 +170,6 @@ public class CameraGUI : MonoBehaviour {
 	void OnMouseDown() {
 		Screen.lockCursor = true;
 	}
+
 
 }
