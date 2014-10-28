@@ -7,13 +7,20 @@ public class TestGun : MonoBehaviour {
 	GameObject focus3;
 	public GameObject prefab;
 	private RaycastHit hit;
+
 	GameObject GunPoint;
 	GameObject CameraView;
+
+	GameObject VitalObj;
+	public Vitals vital;
+
 
 	// Use this for initialization
 	void Start () {
 		GunPoint = GameObject.Find("GunPoint");
 		CameraView = GameObject.Find("Main Camera");
+		VitalObj = GameObject.Find("First Person Controller");
+		vital = (Vitals) VitalObj.GetComponent (typeof(Vitals));
 	}
 	
 	// Update is called once per frame
@@ -22,20 +29,25 @@ public class TestGun : MonoBehaviour {
 
 		if(Input.GetButtonUp("Fire1")){
 			if(Physics.Raycast(ray, out hit)){
-			   if(hit.collider.gameObject.name == "Lamp"){
-					focus1 = hit.collider.gameObject;
-					if(focus2 != null)
-						make ();
-				}
-			
+				Debug.Log (hit.collider.gameObject.name);
 			//Instantiate(WirePrefab);
-				if (hit.collider.gameObject.name == "Generator") {
+				if (hit.collider.gameObject.name == "Generator(Clone)") {
 					focus2 = hit.collider.gameObject;
 					if(focus1 != null)
 						make ();
 				}
 
-				if (hit.collider.gameObject.name == "OxyGen") {
+				if(hit.collider.gameObject.name == "Lamp(Clone)"){
+					focus1 = hit.collider.gameObject;
+					if(focus2 != null)
+						make ();
+				}
+				if (hit.collider.gameObject.name == "OxyGen(Clone)") {
+					focus1 = hit.collider.gameObject;
+					if(focus2 != null)
+						make ();
+				}
+				if (hit.collider.gameObject.name == "OreRefinery(Clone)") {
 					focus1 = hit.collider.gameObject;
 					if(focus2 != null)
 						make ();
@@ -43,10 +55,19 @@ public class TestGun : MonoBehaviour {
 			}
 		}
 		if(Input.GetKeyDown (KeyCode.E)){
-			if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.name == "Generator") {
+			if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.name == "Generator(Clone)") {
 				focus3 = hit.collider.gameObject;
 				Generator gen = focus3.GetComponent<Generator>();
 				gen.power();
+				focus3 = null;
+			}
+			else if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.name == "OreRefinery(Clone)") {
+				focus3 = hit.collider.gameObject;
+				OreRefinery refinery = focus3.GetComponent<OreRefinery>();
+				if(refinery.run() && vital.getMinerals(1) >= 10){
+					vital.setMinerals(1,-10);
+					vital.setMinerals(2,2.5f);
+				}
 				focus3 = null;
 			}
 		}
