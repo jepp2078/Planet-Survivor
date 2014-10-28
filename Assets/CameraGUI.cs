@@ -212,11 +212,9 @@ public class CameraGUI : MonoBehaviour {
 
 	void DidLockCursor() {
 		Debug.Log("Locking cursor");
-		guiTexture.enabled = false;
 	}
 	void DidUnlockCursor() {
 		Debug.Log("Unlocking cursor");
-		guiTexture.enabled = true;
 	}
 	void OnMouseDown() {
 		Screen.lockCursor = true;
