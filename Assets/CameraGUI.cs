@@ -6,8 +6,13 @@ public class CameraGUI : MonoBehaviour {
 	public Texture2D WindowTex;
 	public GameObject[] objectArray;
 	public GameObject[] WeaponArray;
+	private cost price;
+
 	private string Oxygen;
 	private string Health;
+
+	private string Ore;
+	private string Metal;
 
 	private GameObject CurrentWeapon;
 	private GameObject WeaponPosition;
@@ -18,9 +23,14 @@ public class CameraGUI : MonoBehaviour {
 	private GameObject currentObject;
 	//private GameObject CameraObject;
 	private bool openMenu = false;
+	private bool openMineralMenu = false;
 	
 	private MouseLook CameraMouseLook;
 	private MouseLook FPCMouseLook;
+
+	GameObject VitalObj;
+	public Vitals vital;
+
 	
 	private float tempSensX;
 	private float tempSensY;
@@ -29,6 +39,9 @@ public class CameraGUI : MonoBehaviour {
 	void Start(){
 		GameObject CameraObject = GameObject.Find("Main Camera");
 		CameraMouseLook = CameraObject.GetComponent<MouseLook>();
+
+		VitalObj = GameObject.Find("First Person Controller");
+		vital = (Vitals) VitalObj.GetComponent (typeof(Vitals));
 		
 		GameObject FPCObject = GameObject.Find("First Person Controller");
 		FPCMouseLook = FPCObject.GetComponent<MouseLook>();
@@ -61,6 +74,8 @@ public class CameraGUI : MonoBehaviour {
 			switchWeapon(WeaponArray[0]);
 		else if(Input.GetKey(KeyCode.Alpha2))
 			switchWeapon(WeaponArray[1]);
+		else if(Input.GetKey(KeyCode.Alpha3))
+			switchWeapon(WeaponArray[2]);
 
 
 		if(Input.GetKey(KeyCode.Q)){
@@ -89,6 +104,15 @@ public class CameraGUI : MonoBehaviour {
 			Screen.lockCursor = true;
 		}
 
+		if(Input.GetKeyDown(KeyCode.Z)){
+			openMineralMenu = true;
+			Screen.lockCursor = false;
+		}
+		if(Input.GetKeyUp(KeyCode.Z)){
+			openMineralMenu = false;
+			Screen.lockCursor = true;
+		}
+
 		if (Input.GetKeyDown("escape"))
 			Screen.lockCursor = false;
 		
@@ -111,7 +135,12 @@ public class CameraGUI : MonoBehaviour {
 			Debug.DrawLine(ray.origin, hit.point, Color.green, 10, true);
 			
 			if (hit.collider){
-				Instantiate(rezObject, hit.point, Quaternion.identity);
+				cost price = (cost) rezObject.GetComponent (typeof(cost));
+				int mineralType = price.getCostType();
+				if(vital.getMinerals(mineralType) >= price.getPrice()){
+					Instantiate(rezObject, hit.point, Quaternion.identity);
+					vital.setMinerals(mineralType, price.getPrice()*-1);
+				}
 			}
 		}
 	}
@@ -146,7 +175,15 @@ public class CameraGUI : MonoBehaviour {
 				}
 			}
 		}
-	
+
+		if(openMineralMenu){
+			int boxL = 120; //Horizontal lenght of the menu
+			
+			// Make a background box
+			GUI.Box(new Rect(10,10,120,30+30*5), "Minerals");
+			GUI.Label (new Rect (20, 40+(30*0), boxL-20, 20), ""+"Ore: "+Ore);
+			GUI.Label (new Rect (20, 40+(30*1), boxL-20, 20), ""+"Metal: "+Metal);
+		}
 	}
 
 	public void setVitals(int vital, int value){
@@ -158,6 +195,18 @@ public class CameraGUI : MonoBehaviour {
 				Health = value.ToString()+"%";
 				break;
 
+		}
+	}
+
+	public void setMinerals(int mineral, float value){
+		switch(mineral){
+		case 1: 
+			Ore = value.ToString()+"kg";
+			break;
+		case 2: 
+			Metal = value.ToString()+"kg";
+			break;
+			
 		}
 	}
 
