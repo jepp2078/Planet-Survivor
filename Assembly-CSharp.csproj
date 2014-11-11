@@ -59,6 +59,7 @@
      <Compile Include="Assets\MiningGun.cs" />
      <Compile Include="Assets\PhysicsGun.cs" />
      <Compile Include="Assets\Vitals.cs" />
+     <Compile Include="Assets\bulletScript.cs" />
      <Compile Include="Assets\turret_script.cs" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
