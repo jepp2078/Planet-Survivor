@@ -11,7 +11,6 @@ public class PhysicsGun : MonoBehaviour {
 	private Vector3 currentObjectOriginalPos;
 	private GameObject GunPoint;
 	private GameObject CameraView;
-	private LineRenderer linerender;
 
 	private bool holdingObject;
 
@@ -25,8 +24,7 @@ public class PhysicsGun : MonoBehaviour {
 		Debug.Log("finding things");
 		GunPoint = GameObject.Find("GunPoint");
 		CameraView = GameObject.Find("Main Camera");
-		linerender = this.gameObject.GetComponent<LineRenderer> ();
-		
+
 	}
 
 	// Update is called once per frame
@@ -70,9 +68,7 @@ public class PhysicsGun : MonoBehaviour {
 			Vector3 objectToGun = gunVector-currentObject.position;
 
 			Debug.Log("Gunpoint: "+GunPoint);
-			linerender.enabled = true;
-			linerender.SetPosition(0,GunPoint.transform.position);
-			linerender.SetPosition(1,currentObject.position);
+
 			Debug.DrawLine(GunPoint.transform.position, gunVector, Color.blue, 1, true);
 			Debug.DrawLine(currentObject.position, gunVector, Color.yellow, 1, true);
 
@@ -84,10 +80,6 @@ public class PhysicsGun : MonoBehaviour {
 			objectToGun += -CurrentObjectVelocity;
 			
 			currentObject.AddForce(objectToGun, ForceMode.Acceleration);
-
-		}else if(!holdingObject){
-			linerender = this.gameObject.GetComponent<LineRenderer> ();
-			linerender.enabled = false;
 		}
 	}
 }

@@ -8,7 +8,7 @@ public class MiningGun : MonoBehaviour {
 	GameObject CameraView;
 	GameObject VitalObj;
 
-	public float miningSpeed = 0.10f;
+	public float miningSpeed = 1.0f;
 	public float orePerCycle = 10;
 	private float timeSinceLastUpdate;
 	public Vitals vital;
@@ -29,7 +29,6 @@ public class MiningGun : MonoBehaviour {
 			if(Physics.Raycast(ray, out hit)){
 				if(hit.collider.gameObject.name == "Stone"){
 					timeSinceLastUpdate += Time.deltaTime*10;
-					Debug.Log(timeSinceLastUpdate);
 					if (timeSinceLastUpdate > miningSpeed) {
 						timeSinceLastUpdate = 0;
 						vital.setMinerals(1, orePerCycle);

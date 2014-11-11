@@ -5,13 +5,11 @@ public class TestGun : MonoBehaviour {
 	GameObject focus1;
 	GameObject focus2;
 	GameObject focus3;
-	Vector3 pos1,pos2;
 	public GameObject prefab;
 	private RaycastHit hit;
 
 	GameObject GunPoint;
 	GameObject CameraView;
-	private LineRenderer linerender;
 
 	GameObject VitalObj;
 	public Vitals vital;
@@ -35,26 +33,22 @@ public class TestGun : MonoBehaviour {
 			//Instantiate(WirePrefab);
 				if (hit.collider.gameObject.name == "Generator(Clone)") {
 					focus2 = hit.collider.gameObject;
-					pos2 = focus2.gameObject.transform.position;
 					if(focus1 != null)
 						make ();
 				}
 
 				if(hit.collider.gameObject.name == "Lamp(Clone)"){
 					focus1 = hit.collider.gameObject;
-					pos1 = focus1.gameObject.transform.position;
 					if(focus2 != null)
 						make ();
 				}
 				if (hit.collider.gameObject.name == "OxyGen(Clone)") {
 					focus1 = hit.collider.gameObject;
-					pos1 = focus1.gameObject.transform.position;
 					if(focus2 != null)
 						make ();
 				}
 				if (hit.collider.gameObject.name == "OreRefinery(Clone)") {
 					focus1 = hit.collider.gameObject;
-					pos1 = focus1.gameObject.transform.position;
 					if(focus2 != null)
 						make ();
 				}
@@ -81,15 +75,11 @@ public class TestGun : MonoBehaviour {
 	}
 
 	void make(){
-
 		GameObject tempWire = (GameObject)Instantiate(prefab);
 		Wire wireClass = tempWire.GetComponent<Wire> ();
 		wireClass.setDest (focus1);
 		wireClass.setSource (focus2);
 		wireClass.connect ();
-		linerender = tempWire.GetComponent<LineRenderer> ();
-		linerender.SetPosition(0,pos1);
-		linerender.SetPosition(1,pos2);
 		focus1 = null;
 		focus2 = null;
 	}

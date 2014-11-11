@@ -171,7 +171,6 @@ public class CameraGUI : MonoBehaviour {
 			
 			for (int i=0; i < objectArray.Length; i++) {
 				if (GUI.Button (new Rect (20, 40+(30*i), boxL-20, 20), ""+objectArray[i].name)) {
-					Debug.Log("placing"+objectArray[i].name);
 					rezItem(objectArray[i]);
 				}
 			}
