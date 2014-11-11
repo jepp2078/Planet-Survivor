@@ -8,14 +8,17 @@ public class Wire : MonoBehaviour {
 	public deviceInterface destInt;
 	public int wireNum;
 	public Generator gen;
+	private LineRenderer linerender;
+
 	// Use this for initialization
 	void Start () {
-	
+		linerender = this.gameObject.GetComponent<LineRenderer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.DrawLine(source.transform.position, dest.transform.position, Color.green, 1, true);
+		linerender.SetPosition(0,source.transform.position);
+		linerender.SetPosition(1,dest.transform.position);
 	}
 	public int getWireNum(){
 		return wireNum;
