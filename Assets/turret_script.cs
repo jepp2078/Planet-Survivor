@@ -20,7 +20,7 @@ public class turret_script : MonoBehaviour {
 			Debug.DrawRay(turret_GunPoint.transform.position, turret_GunPoint.transform.forward, Color.red, 0.1f);
 			Vector3 targetVector = Enemy.transform.position - turret_GunPoint.transform.position;
 			Vector3 deltaRotation = turret_GunPoint.transform.forward - targetVector.normalized;
-			turret_Body.transform.Rotate(0, deltaRotation.x, 0);
+			turret_Body.transform.Rotate(0, deltaRotation.x-deltaRotation.z, 0);
 			//turret_Gunmount.transform.Rotate(0, deltaRotation.x ,0);
 			Debug.DrawRay(turret_GunPoint.transform.position, targetVector.normalized, Color.green, 1);
 

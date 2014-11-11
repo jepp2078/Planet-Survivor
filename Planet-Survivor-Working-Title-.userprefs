@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\turret_script.cs">
     <Files>
-      <File FileName="Assets\CameraGUI.cs" Line="176" Column="3" />
-      <File FileName="Assets\turret_script.cs" Line="19" Column="21" />
+      <File FileName="Assets\turret_script.cs" Line="17" Column="18" />
+      <File FileName="Assets\CameraGUI.cs" Line="225" Column="1" />
+      <File FileName="Assets\PhysicsGun.cs" Line="72" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
