@@ -143,6 +143,7 @@ public class CameraGUI : MonoBehaviour {
 				int mineralType = price.getCostType();
 				if(vital.getMinerals(mineralType) >= price.getPrice()){
 					currentObject = (GameObject)Instantiate(rezObject, hit.point, Quaternion.identity);
+					currentObject.transform.rotation.Set(0,0,0,0);
 					vital.setMinerals(mineralType, price.getPrice()*-1);
 				}
 			}
@@ -235,14 +236,15 @@ public class CameraGUI : MonoBehaviour {
 		if(Physics.Raycast(ray, out hit, 1000.0f, layerMask)) {
 			if(Input.GetMouseButton(0)){
 				currentObject.rigidbody.WakeUp();
-				currentObject.layer = LayerMask.NameToLayer("Ground");
+				currentObject.layer = LayerMask.NameToLayer("SpawnCollide");
 				currentObject = null;
 				
 			}else{
 				Vector3 target = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 				currentObject.rigidbody.Sleep ();
-				currentObject.transform.rotation.Set(0,0,0,0);
-				
+	
+				currentObject.transform.Rotate(Vector3.up, Input.GetAxis("Mouse ScrollWheel")*100);
+
 				Vector3 offset = new Vector3(0,currentObject.collider.bounds.size.y/2.0f,0);
 				currentObject.transform.position = target + offset;
 			}
