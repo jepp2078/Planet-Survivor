@@ -16,11 +16,11 @@ public class CameraGUI : MonoBehaviour {
 
 	private GameObject CurrentWeapon;
 	private GameObject WeaponPosition;
+	private GameObject currentObject;
 
 	private Rect CrossHairPosition;
 	private Rect OxygenPosition;
 	private Rect HealthPosition;
-	private GameObject currentObject;
 	//private GameObject CameraObject;
 	private bool openMenu = false;
 	private bool openMineralMenu = false;
@@ -69,6 +69,10 @@ public class CameraGUI : MonoBehaviour {
 		CrossHairPosition = new Rect((Screen.width - CrossHairTex.width)/2, (Screen.height - CrossHairTex.height)/2, CrossHairTex.width, CrossHairTex.height);
 		OxygenPosition = new Rect(0+Screen.width/128, Screen.height-(Screen.height/8), WindowTex.width/2, WindowTex.height/2);
 		HealthPosition = new Rect(Screen.width-Screen.width/8.5f, Screen.height-(Screen.height/8), WindowTex.width/2, WindowTex.height/2);
+
+		if (currentObject != null) {
+			MoveTheObject();
+		}
 
 		if(Input.GetKey(KeyCode.Alpha1))
 			switchWeapon(WeaponArray[0]);
@@ -138,7 +142,7 @@ public class CameraGUI : MonoBehaviour {
 				cost price = (cost) rezObject.GetComponent (typeof(cost));
 				int mineralType = price.getCostType();
 				if(vital.getMinerals(mineralType) >= price.getPrice()){
-					Instantiate(rezObject, hit.point, Quaternion.identity);
+					currentObject = (GameObject)Instantiate(rezObject, hit.point, Quaternion.identity);
 					vital.setMinerals(mineralType, price.getPrice()*-1);
 				}
 			}
@@ -219,6 +223,30 @@ public class CameraGUI : MonoBehaviour {
 	}
 	void OnMouseDown() {
 		Screen.lockCursor = true;
+	}
+
+	void MoveTheObject(){
+		RaycastHit hit;
+
+		int layerMask = LayerMask.GetMask ("SpawnCollide");
+		
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		
+		if(Physics.Raycast(ray, out hit, 1000.0f, layerMask)) {
+			if(Input.GetMouseButton(0)){
+				currentObject.rigidbody.WakeUp();
+				currentObject.layer = LayerMask.NameToLayer("Ground");
+				currentObject = null;
+				
+			}else{
+				Vector3 target = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+				currentObject.rigidbody.Sleep ();
+				currentObject.transform.rotation.Set(0,0,0,0);
+				
+				Vector3 offset = new Vector3(0,currentObject.collider.bounds.size.y/2.0f,0);
+				currentObject.transform.position = target + offset;
+			}
+		}
 	}
 
 

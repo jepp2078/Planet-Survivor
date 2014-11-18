@@ -6,6 +6,7 @@ public class Generator : MonoBehaviour {
 	public bool activated = false;
 	public Wire[] wiresArray = new Wire[10];
 	public int connectedWires = 0;
+	public DisplayScript display;
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +15,7 @@ public class Generator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		display.set (remainingOutput.ToString ());
 	}
 	public int connectWire(Wire inWire){
 		if(connectedWires < 10){
