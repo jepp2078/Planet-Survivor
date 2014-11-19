@@ -11,7 +11,11 @@ public class PhysicsGun : MonoBehaviour {
 	private Vector3 currentObjectOriginalPos;
 	private GameObject GunPoint;
 	private GameObject CameraView;
+	private GameObject FPV;
 	private LineRenderer linerender;
+
+	private MouseLook mouseLook;
+	private MouseLook mouseLook1;
 
 	private bool holdingObject;
 
@@ -25,6 +29,9 @@ public class PhysicsGun : MonoBehaviour {
 		Debug.Log("finding things");
 		GunPoint = GameObject.Find("GunPoint");
 		CameraView = GameObject.Find("Main Camera");
+		FPV = GameObject.Find("First Person Controller");
+		mouseLook = (MouseLook) FPV.GetComponent(typeof(MouseLook));
+		mouseLook1 = (MouseLook) CameraView.GetComponent(typeof(MouseLook));
 		linerender = this.gameObject.GetComponent<LineRenderer> ();
 		
 	}
@@ -64,6 +71,7 @@ public class PhysicsGun : MonoBehaviour {
 		}
 
 		if(holdingObject){
+
 			rayLenght += Input.GetAxis("Mouse ScrollWheel");
 		
 			Vector3 gunVector = CameraView.transform.TransformPoint(Vector3.forward*objectScale*rayLenght);
@@ -82,10 +90,23 @@ public class PhysicsGun : MonoBehaviour {
 			Vector3 CurrentObjectVelocity = currentObject.velocity;
 			CurrentObjectVelocity.Scale(new Vector3(10, 10, 10));
 			objectToGun += -CurrentObjectVelocity;
-			
-			currentObject.AddForce(objectToGun, ForceMode.Acceleration);
+			if(Input.GetButton("Fire2")) {
+				mouseLook.lookSleep();
+				mouseLook1.lookSleep();
+				Debug.Log ("fire2");
+				currentObject.rigidbody.Sleep();
+				currentObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0),Time.deltaTime*250); 
+			}else{
+				mouseLook.lookAwake();
+				mouseLook1.lookAwake();
+				currentObject.rigidbody.WakeUp();
+				currentObject.AddForce(objectToGun, ForceMode.Acceleration);
+			}
 
 		}else if(!holdingObject){
+			mouseLook.lookAwake();
+			mouseLook1.lookAwake();
+			currentObject.rigidbody.WakeUp();
 			linerender = this.gameObject.GetComponent<LineRenderer> ();
 			linerender.enabled = false;
 		}
