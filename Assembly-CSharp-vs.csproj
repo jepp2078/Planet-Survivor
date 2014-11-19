@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\CameraGUI.cs" />
      <Compile Include="Assets\Display\DisplayScript.cs" />
+     <Compile Include="Assets\Electricity\Button.cs" />
      <Compile Include="Assets\Electricity\Generator.cs" />
      <Compile Include="Assets\Electricity\Lamp.cs" />
      <Compile Include="Assets\Electricity\OreRefinery.cs" />

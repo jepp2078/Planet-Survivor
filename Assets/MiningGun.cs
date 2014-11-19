@@ -25,7 +25,7 @@ public class MiningGun : MonoBehaviour {
 	void Update () {
 		Ray ray = new Ray (CameraView.transform.position, CameraView.transform.forward);
 		
-		if(Input.GetButtonDown("Fire1")){
+		if(Input.GetButton("Fire1")){
 			if(Physics.Raycast(ray, out hit)){
 				if(hit.collider.gameObject.name == "Stone"){
 					timeSinceLastUpdate += Time.deltaTime*10;
