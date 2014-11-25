@@ -68,6 +68,7 @@ public class PhysicsGun : MonoBehaviour {
 			holdingObject = false;
 			rayLenght = 100;
 			Debug.Log("releasing object");
+			currentObject.rigidbody.WakeUp();
 		}
 
 		if(holdingObject){
@@ -106,7 +107,6 @@ public class PhysicsGun : MonoBehaviour {
 		}else if(!holdingObject){
 			mouseLook.lookAwake();
 			mouseLook1.lookAwake();
-			currentObject.rigidbody.WakeUp();
 			linerender = this.gameObject.GetComponent<LineRenderer> ();
 			linerender.enabled = false;
 		}
