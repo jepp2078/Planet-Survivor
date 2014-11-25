@@ -23,7 +23,7 @@ public class CameraGUI : MonoBehaviour {
 	private Rect HealthPosition;
 	//private GameObject CameraObject;
 	private bool openMenu = false;
-	private bool openMineralMenu = false;
+	private bool openMineralMenu = true;
 	
 	private MouseLook CameraMouseLook;
 	private MouseLook FPCMouseLook;
@@ -67,8 +67,8 @@ public class CameraGUI : MonoBehaviour {
 
 	void Update () {
 		CrossHairPosition = new Rect((Screen.width - CrossHairTex.width)/2, (Screen.height - CrossHairTex.height)/2, CrossHairTex.width, CrossHairTex.height);
-		OxygenPosition = new Rect(0+Screen.width/128, Screen.height-(Screen.height/8), WindowTex.width/2, WindowTex.height/2);
-		HealthPosition = new Rect(Screen.width-Screen.width/8.5f, Screen.height-(Screen.height/8), WindowTex.width/2, WindowTex.height/2);
+		OxygenPosition = new Rect(15, Screen.height-(Screen.height/8), WindowTex.width/2, WindowTex.height/2);
+		HealthPosition = new Rect(Screen.width-145, Screen.height-(Screen.height/8), WindowTex.width/2, WindowTex.height/2);
 
 		if (currentObject != null) {
 			MoveTheObject();
@@ -105,15 +105,6 @@ public class CameraGUI : MonoBehaviour {
 		}
 		if(Input.GetKeyUp(KeyCode.Q)){
 			openMenu = false;
-			Screen.lockCursor = true;
-		}
-
-		if(Input.GetKeyDown(KeyCode.Z)){
-			openMineralMenu = true;
-			Screen.lockCursor = false;
-		}
-		if(Input.GetKeyUp(KeyCode.Z)){
-			openMineralMenu = false;
 			Screen.lockCursor = true;
 		}
 
@@ -186,9 +177,9 @@ public class CameraGUI : MonoBehaviour {
 			int boxL = 120; //Horizontal lenght of the menu
 			
 			// Make a background box
-			GUI.Box(new Rect(10,10,120,30+30*5), "Minerals");
-			GUI.Label (new Rect (20, 40+(30*0), boxL-20, 20), ""+"Ore: "+Ore);
-			GUI.Label (new Rect (20, 40+(30*1), boxL-20, 20), ""+"Metal: "+Metal);
+			GUI.Box(new Rect(Screen.width-140,Screen.height-300,120,30+30*5), "Minerals");
+			GUI.Label (new Rect (Screen.width-130,Screen.height-270+(30*0), boxL-20, 20), ""+"Ore: "+Ore);
+			GUI.Label (new Rect (Screen.width-130,Screen.height-270+(30*1), boxL-20, 20), ""+"Metal: "+Metal);
 		}
 	}
 
