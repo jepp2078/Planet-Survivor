@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\CameraGUI.cs" />
      <Compile Include="Assets\Display\DisplayScript.cs" />
+     <Compile Include="Assets\Electricity\Button.cs" />
      <Compile Include="Assets\Electricity\Generator.cs" />
      <Compile Include="Assets\Electricity\Lamp.cs" />
      <Compile Include="Assets\Electricity\OreRefinery.cs" />
@@ -69,6 +70,7 @@
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Shader\ToonTest.shader" />
+     <None Include="Assets\my assets\skybox\desert3\Note.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
