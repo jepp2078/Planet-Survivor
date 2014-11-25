@@ -7,6 +7,7 @@ public class turret_script : MonoBehaviour {
 	public float shotDelay;
 	public Rigidbody projectile; 
 	public float gunpower;
+	public float distance = 100;
 
 	private Quaternion startYaw, startPitch, start_turret_GunPoint; 
 	private Quaternion _lookRotation;
@@ -59,7 +60,6 @@ public class turret_script : MonoBehaviour {
 		GameObject[] gos;
 		gos = GameObject.FindGameObjectsWithTag("Enemy");
 		GameObject closest = null;
-		float distance = Mathf.Infinity;
 		Vector3 position = transform.position;
 		foreach (GameObject go in gos) {
 			Vector3 diff = go.transform.position - position;

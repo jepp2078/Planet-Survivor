@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{AF4F6DEF-04C2-D43D-1F34-1DD109719632}</ProjectGuid>
+	<ProjectGuid>{C6EFDEA2-6B05-15D7-BADE-5B9640935258}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -58,6 +58,7 @@
      <Compile Include="Assets\Electricity\Wire.cs" />
      <Compile Include="Assets\Electricity\cost.cs" />
      <Compile Include="Assets\Electricity\deviceInterface.cs" />
+     <Compile Include="Assets\Enemy\FollowAI.cs" />
      <Compile Include="Assets\MiningGun.cs" />
      <Compile Include="Assets\PhysicsGun.cs" />
      <Compile Include="Assets\Vitals.cs" />
@@ -69,17 +70,19 @@
      <None Include="Assets\Display\3DText.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Shader\ToonTest.shader" />
      <None Include="Assets\my assets\skybox\desert3\Note.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
+     <None Include="Assets\Shader\ToonTerrainAddPass.shader" />
      <None Include="Assets\Display\3DTextOneSided.shader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{7D131E6A-3381-A284-CA07-16148CA76CA0}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{07CF487C-E131-D0D9-0E3C-C5F967FF695E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{6732AD4B-498C-9899-78E3-6DEEBF818C8C}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+      <Project>{A1921262-9999-6E4B-75C8-B511A68DA33D}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
