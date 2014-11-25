@@ -95,7 +95,7 @@ public class PhysicsGun : MonoBehaviour {
 				mouseLook1.lookSleep();
 				Debug.Log ("fire2");
 				currentObject.rigidbody.Sleep();
-				currentObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0),Time.deltaTime*250); 
+				currentObject.transform.Rotate(new Vector3(0, -Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")),Time.deltaTime*100); 
 			}else{
 				mouseLook.lookAwake();
 				mouseLook1.lookAwake();
