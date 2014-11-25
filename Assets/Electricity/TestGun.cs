@@ -58,6 +58,12 @@ public class TestGun : MonoBehaviour {
 					if(focus2 != null)
 						make ();
 				}
+				if (hit.collider.gameObject.name == "Door(Clone)") {
+					focus1 = hit.collider.gameObject;
+					pos1 = focus1.gameObject.transform.position;
+					if(focus2 != null)
+						make ();
+				}
 			}
 		}
 		if(Input.GetKeyDown (KeyCode.E)){
