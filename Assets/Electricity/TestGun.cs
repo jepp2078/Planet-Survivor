@@ -33,30 +33,26 @@ public class TestGun : MonoBehaviour {
 			if(Physics.Raycast(ray, out hit)){
 				Debug.Log (hit.collider.gameObject.name);
 			//Instantiate(WirePrefab);
-				//if (hit.collider.gameObject.name == "Generator(Clone)") {
-				if (hit.collider.gameObject.tag == "Generator") {
+				if (hit.collider.gameObject.name == "Generator(Clone)") {
 					focus2 = hit.collider.gameObject;
 					pos2 = focus2.gameObject.transform.position;
 					if(focus1 != null)
 						make ();
 				}
 
-				//if(hit.collider.gameObject.name == "Lamp(Clone)"){
-				if (hit.collider.gameObject.tag == "Lamp") {
+				if(hit.collider.gameObject.name == "Lamp(Clone)"){
 					focus1 = hit.collider.gameObject;
 					pos1 = focus1.gameObject.transform.position;
 					if(focus2 != null)
 						make ();
 				}
-				//if (hit.collider.gameObject.name == "OxyGen(Clone)") {
-				if (hit.collider.gameObject.tag == "OxyGen") {
+				if (hit.collider.gameObject.name == "OxyGen(Clone)") {
 					focus1 = hit.collider.gameObject;
 					pos1 = focus1.gameObject.transform.position;
 					if(focus2 != null)
 						make ();
 				}
-				//if (hit.collider.gameObject.name == "OreRefinery(Clone)") {
-				if (hit.collider.gameObject.tag == "OreRefinery") {
+				if (hit.collider.gameObject.name == "OreRefinery(Clone)") {
 					focus1 = hit.collider.gameObject;
 					pos1 = focus1.gameObject.transform.position;
 					if(focus2 != null)
@@ -65,17 +61,13 @@ public class TestGun : MonoBehaviour {
 			}
 		}
 		if(Input.GetKeyDown (KeyCode.E)){
-			//if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.name == "Generator(Clone)") {
-			if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.tag == "Generator") {
-
+			if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.name == "Generator(Clone)") {
 				focus3 = hit.collider.gameObject;
 				Generator gen = focus3.GetComponent<Generator>();
 				gen.power();
 				focus3 = null;
 			}
-			//else if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.name == "OreRefinery(Clone)") {
-			else if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.tag == "OreRefinery") {
-
+			else if (Physics.Raycast (ray, out hit) && hit.collider.gameObject.name == "OreRefinery(Clone)") {
 				focus3 = hit.collider.gameObject;
 				OreRefinery refinery = focus3.GetComponent<OreRefinery>();
 				if(refinery.run() && vital.getMinerals(1) >= 10){

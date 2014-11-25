@@ -5,15 +5,13 @@ public class OxyGen : MonoBehaviour , deviceInterface{
 	public bool activated = false;
 	private int nPower = 500;
 	public GameObject sphere;
-	public DisplayScript display;
-
 	void Start () {
-
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		display.set (nPower.ToString());
+		
 	}
 	
 	public int getNeededPower(){
