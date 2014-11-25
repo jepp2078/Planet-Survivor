@@ -44,7 +44,6 @@ public class turret_script : MonoBehaviour {
 		}
 
 		if(Time.time - lastShotTime > shotDelay){
-			Debug.Log("bang!");
 			lastShotTime = Time.time;
 			shoot (Enemy);
 		}
