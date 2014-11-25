@@ -58,6 +58,7 @@
      <Compile Include="Assets\Electricity\Wire.cs" />
      <Compile Include="Assets\Electricity\cost.cs" />
      <Compile Include="Assets\Electricity\deviceInterface.cs" />
+     <Compile Include="Assets\Enemy\FollowAI.cs" />
      <Compile Include="Assets\MiningGun.cs" />
      <Compile Include="Assets\PhysicsGun.cs" />
      <Compile Include="Assets\Vitals.cs" />
