@@ -1,10 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Electricity\TestGun.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Electricity\OxySphere.cs">
     <Files>
-      <File FileName="Assets\Electricity\Generator.cs" Line="18" Column="3" />
-      <File FileName="Assets\Electricity\OxyGen.cs" Line="35" Column="1" />
-      <File FileName="Assets\Electricity\TestGun.cs" Line="69" Column="84" />
+      <File FileName="Assets\CameraGUI.cs" Line="244" Column="5" />
+      <File FileName="Assets\Electricity\Generator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Electricity\OxyGen.cs" Line="16" Column="8" />
+      <File FileName="Assets\Electricity\TestGun.cs" Line="53" Column="39" />
+      <File FileName="Assets\Electricity\Wire.cs" Line="1" Column="1" />
+      <File FileName="Assets\Electricity\Lamp.cs" Line="1" Column="1" />
+      <File FileName="Assets\Electricity\cost.cs" Line="1" Column="1" />
+      <File FileName="Assets\Electricity\OxySphere.cs" Line="23" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
