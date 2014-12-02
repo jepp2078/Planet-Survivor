@@ -8,7 +8,7 @@ public class Vitals : MonoBehaviour {
 	public int health = 100; //procentage
 
 	public float ore = 0; //in kg
-	public float metal = 0; //in kg
+	public float tiberium = 0; //in kg
 
 	public bool inside;
 	private float timeSinceLastUpdate;
@@ -21,14 +21,14 @@ public class Vitals : MonoBehaviour {
 		gui.setVitals (2, oxygen);
 
 		gui.setMinerals (1, ore);
-		gui.setMinerals(2, metal);
+		gui.setMinerals(2, tiberium);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(!inside){
 			timeSinceLastUpdate += Time.deltaTime;
-			if (timeSinceLastUpdate > 0.1) {
+			if (timeSinceLastUpdate > 0.25) {
 				if(oxygen == 0){
 					if(health == 0){
 						timeSinceLastUpdate = 0;
@@ -69,8 +69,8 @@ public class Vitals : MonoBehaviour {
 			gui.setMinerals (mineral, ore);
 			break;
 		case 2: 
-			metal += amount;
-			gui.setMinerals (mineral, metal);
+			tiberium += amount;
+			gui.setMinerals (mineral, tiberium);
 			break;
 			
 		}
@@ -81,7 +81,7 @@ public class Vitals : MonoBehaviour {
 			return ore;
 			break;
 		case 2: 
-			return metal;
+			return tiberium;
 			break;
 			
 		}

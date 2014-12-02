@@ -8,7 +8,7 @@ public class DisplayScript : MonoBehaviour {
 	public string textOnDisplay;
 	// Use this for initialization
 	void Start () {
-		text.text = "Text Here";
+		text.text = textOnDisplay;
 	}
 	
 	// Update is called once per frame

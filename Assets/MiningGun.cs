@@ -28,11 +28,19 @@ public class MiningGun : MonoBehaviour {
 		if(Input.GetButton("Fire1")){
 			if(Physics.Raycast(ray, out hit)){
 				if(hit.collider.gameObject.name == "Stone"){
-					timeSinceLastUpdate += Time.deltaTime*10;
+					timeSinceLastUpdate += Time.deltaTime*2;
 					Debug.Log(timeSinceLastUpdate);
 					if (timeSinceLastUpdate > miningSpeed) {
 						timeSinceLastUpdate = 0;
 						vital.setMinerals(1, orePerCycle);
+					}
+				}
+				if(hit.collider.gameObject.name == "tiberium"){
+					timeSinceLastUpdate += Time.deltaTime*1;
+					Debug.Log(timeSinceLastUpdate);
+					if (timeSinceLastUpdate > miningSpeed) {
+						timeSinceLastUpdate = 0;
+						vital.setMinerals(2, orePerCycle);
 					}
 				}
 			}

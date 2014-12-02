@@ -12,7 +12,7 @@ public class CameraGUI : MonoBehaviour {
 	private string Health;
 
 	private string Ore;
-	private string Metal;
+	private string Tiberium;
 
 	private GameObject CurrentWeapon;
 	private GameObject WeaponPosition;
@@ -188,7 +188,7 @@ public class CameraGUI : MonoBehaviour {
 			// Make a background box
 			GUI.Box(new Rect(10,10,120,30+30*5), "Minerals");
 			GUI.Label (new Rect (20, 40+(30*0), boxL-20, 20), ""+"Ore: "+Ore);
-			GUI.Label (new Rect (20, 40+(30*1), boxL-20, 20), ""+"Metal: "+Metal);
+			GUI.Label (new Rect (20, 40+(30*1), boxL-20, 20), ""+"Tiberium: "+Tiberium);
 		}
 	}
 
@@ -210,7 +210,7 @@ public class CameraGUI : MonoBehaviour {
 			Ore = value.ToString()+"kg";
 			break;
 		case 2: 
-			Metal = value.ToString()+"kg";
+			Tiberium = value.ToString()+"kg";
 			break;
 			
 		}
